@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: smtp2discord
+    network_mode: "host"
+    volumes:
+      - .:/app
+    environment:
+      - SMTP_PORT=1025

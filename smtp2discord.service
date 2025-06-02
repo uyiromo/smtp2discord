@@ -1,0 +1,15 @@
+[Unit]
+Description=SMTP2Discord Docker Compose Service
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+User=${__USER__}
+ExecStart=/usr/bin/docker compose -f ${__DOCKER_COMPOSE_YAML__} up -d
+ExecStop=/usr/bin/docker compose -f ${__DOCKER_COMPOSE_YAML__} down
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
