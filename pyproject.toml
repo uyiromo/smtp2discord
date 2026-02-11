@@ -1,5 +1,36 @@
-[tool.black]
-line-length = 120
+[project]
+name = "smtp2discord"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosmtpd>=1.4.6",
+    "discord-py>=2.6.4",
+]
 
-[tool.mypy]
-disable_error_code = [ "import-not-found", "import-untyped" ]
+[tool.ruff]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+]
+fix = true
+indent-width = 4
+line-length = 120
+show-fixes = true
+
+[tool.ruff.format]
+docstring-code-format   = true
+line-ending             = "lf"
+quote-style             = "single"
+
+[tool.ruff.lint]
+select = ["A", "B", "E", "F", "I", "W"]
+fixable = ["ALL"]
+
+[tool.ruff.isort]
+section-order = ["future", "standard-library", "first-party", "local-folder", "third-party"]
+

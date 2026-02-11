@@ -1,9 +1,11 @@
 services:
   app:
-    build: .
-    container_name: smtp2discord
+    image: ghcr.io/astral-sh/uv:python3.14-alpine
     network_mode: "host"
+    working_dir: /app
     volumes:
       - .:/app
     environment:
-      - SMTP_PORT=1025
+      SMTP_PORT: "1025"
+      UV_PROJECT_ENVIRONMENT: ".venv-smtpd"
+    command: ["uv", "run", "smtpd.py"]
